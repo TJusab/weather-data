@@ -16,6 +16,11 @@ input {
   margin: 1rem;
 }
 
+h1 {
+  text-align: center;
+  margin: 2rem auto;
+}
+
 .main-container {
   width: 150%;
 }
@@ -36,18 +41,16 @@ input {
   padding: 10px;
 }
 
-h1 {
-  text-align: center;
-}
-
 .weather-form {
   margin: 1rem auto;
   width: 45%;
 }
 
 .submit-btn {
-  margin: 1rem;
+  margin: 2rem auto;
   letter-spacing: 1px;
+  padding: 1rem;
+  font-size: 20px;
 }
 
 .weather-data-container {

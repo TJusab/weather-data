@@ -1,35 +1,39 @@
 import { FC, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { Action } from '../reducer/weatherReducer';
 
-const InputForm: FC = () => {
-    const [input, setInput] = useState({
+const WeatherForm: FC<WeatherFormProps> = (props) => {
+    const { dispatch } = props;
+    const [weatherData, setData] = useState({
         year: '',
         month: '',
         day: ''
     });
-
-    const handleOnChange = (event: { target: { name: any; value: any; }; }) => {
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        setInput((prevState) => {
+        setData((prevState) => {
             return {
                 ...prevState,
                 [name]: value
             };
         });
     };
-
-    const handleOnSubmit = (event: { preventDefault: () => void; }) => {
+    const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        dispatch({
+            type: 'ADD_WEATHER_DATA',
+            payload: weatherData
+        });
     };
-
     return (
         <Form onSubmit={handleOnSubmit} className='weather-form'>
             <Form.Group controlId='year'>
                 <Form.Label>Year</Form.Label>
-                <Form.Control 
+                <Form.Control
                     className='year'
-                    value={input.year}
-                    type='number'
+                    name='year'
+                    value={weatherData.year}
+                    type='text'
                     onChange={handleOnChange}
                 />
             </Form.Group>
@@ -37,8 +41,9 @@ const InputForm: FC = () => {
                 <Form.Label>Month</Form.Label>
                 <Form.Control
                     className='month'
-                    value={input.month}
-                    type='number'
+                    name='month'
+                    value={weatherData.month}
+                    type='text'
                     onChange={handleOnChange}
                 />
             </Form.Group>
@@ -46,18 +51,24 @@ const InputForm: FC = () => {
                 <Form.Label>Day</Form.Label>
                 <Form.Control
                     className='day'
-                    value={input.day}
-                    type='number'
+                    name='day'
+                    value={weatherData.day}
+                    type='text'
                     onChange={handleOnChange}
                 />
             </Form.Group>
             <Form.Group controlId='submit'>
                 <Button variant='primary' type='submit' className='submit-btn'>
-                    Get Weather Data
+                    Add Weather Date
                 </Button>
             </Form.Group>
         </Form>
     );
 };
+export default WeatherForm;
 
-export default InputForm;
+interface WeatherFormProps {
+    dispatch: React.Dispatch<Action>;
+}
+
+
