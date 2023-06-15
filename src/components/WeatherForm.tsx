@@ -1,9 +1,7 @@
 import { FC, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Action } from '../reducer/weatherReducer';
 
-const WeatherForm: FC<WeatherFormProps> = (props) => {
-    const { dispatch } = props;
+const WeatherForm: FC = () => {
     const [weatherData, setData] = useState({
         year: '',
         month: '',
@@ -20,10 +18,7 @@ const WeatherForm: FC<WeatherFormProps> = (props) => {
     };
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        dispatch({
-            type: 'ADD_WEATHER_DATA',
-            payload: weatherData
-        });
+        console.log(weatherData);
     };
     return (
         <Form onSubmit={handleOnSubmit} className='weather-form'>
@@ -66,9 +61,4 @@ const WeatherForm: FC<WeatherFormProps> = (props) => {
     );
 };
 export default WeatherForm;
-
-interface WeatherFormProps {
-    dispatch: React.Dispatch<Action>;
-}
-
 

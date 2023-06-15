@@ -36,7 +36,7 @@ body {
     padding: 10px;
 }
 
-h1 {
+h1, h3 {
     text-align: center;
 }
 
@@ -62,7 +62,8 @@ h1 {
 
 .weather-list {
     display: flex;
-    width: 45%;
+    width: 100%;
+    padding: 10px;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -72,30 +73,30 @@ h1 {
     margin-bottom: 1.2rem;
 }
 
-.contacts-list-table,
-.contacts-list-table tr,
-.contacts-list-table th,
-.contacts-list-table td {
+.weather-list-table,
+.weather-list-table tr,
+.weather-list-table th,
+.weather-list-table td {
     padding: 5px 20px;
 }
 
-.contacts-list-table {
+.weather-list-table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.contacts-list-table th,
-.contacts-list-table td {
+.weather-list-table th,
+.weather-list-table td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
-.contacts-list-table tr:nth-child(even) {
+.weather-list-table tr:nth-child(even) {
     background: #ecebee;
 }
 
-.contacts-list-header {
+.weather-list-header {
     position: sticky;
     top: 0;
     background: #ecebee;
